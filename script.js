@@ -12,19 +12,14 @@ const thumbGrid = document.getElementById('thumbGrid');
 
 total.textContent = String(TOTAL).padStart(2,'0');
 
-function isPortrait(){ return window.matchMedia('(orientation: portrait) and (max-width:700px)').matches; }
+function isPortrait(){ return false; } // All devices use the complete 2:1 spread.
 function pageBg(n){ return `url("${pagePath(n)}")`; }
 function render(){
-  if(isPortrait()){
-    base.style.backgroundImage = pageBg(page);
-    base.style.backgroundSize = '200% 100%';
-    base.style.backgroundPosition = 'left center';
-    base.style.left='0'; base.style.width='50%';
-  } else {
-    base.style.backgroundImage = pageBg(page);
-    base.style.backgroundSize='cover'; base.style.backgroundPosition='center';
-    base.style.left='0'; base.style.width='100%';
-  }
+  base.style.backgroundImage = pageBg(page);
+  base.style.backgroundSize='cover';
+  base.style.backgroundPosition='center';
+  base.style.left='0';
+  base.style.width='100%';
   current.textContent=String(page).padStart(2,'0');
   [...thumbGrid.children].forEach((el,i)=>el.classList.toggle('active',i===page-1));
 }
@@ -34,19 +29,16 @@ function go(delta){
   if(busy) return;
   const next=page+delta;
   if(next<1||next>TOTAL)return;
-  busy=true; direction=delta>0?'back':'next';
+  busy=true;
+  direction=delta>0?'back':'next';
   turning.className='spread turning '+(direction==='back'?'back':'');
   turning.style.backgroundImage=pageBg(page);
-  if(isPortrait()){
-    turning.style.backgroundSize='200% 100%';
-    turning.style.backgroundPosition='left center';
-    turning.style.left='0'; turning.style.width='50%';
-  }else{
-    turning.style.backgroundSize='cover'; turning.style.backgroundPosition='center';
-    turning.style.left='0'; turning.style.width='100%';
-  }
-  // The new page is placed underneath before the sheet turns.
-  page=next; render();
+  turning.style.backgroundSize='cover';
+  turning.style.backgroundPosition='center';
+  turning.style.left='0';
+  turning.style.width='100%';
+  page=next;
+  render();
   requestAnimationFrame(()=>turning.classList.add('active'));
   setTimeout(()=>{
     turning.className='spread turning';
