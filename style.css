@@ -14,8 +14,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .bottombar{border-top:1px solid rgba(255,255,255,.08);font-size:11px;color:var(--muted)}
 .brand{font-size:13px;letter-spacing:.16em;font-weight:600}
 .top-actions{display:flex;gap:20px}.top-actions button{font-size:10px;color:var(--muted);letter-spacing:.12em}.top-actions button:hover{color:#fff}
-.viewer{position:relative;flex:1;display:flex;align-items:center;justify-content:center;min-height:0;padding:22px 68px}
-.book{position:relative;width:min(88vw,calc((100vh - 142px)*2));aspect-ratio:2/1;perspective:2200px;outline:none;filter:drop-shadow(var(--shadow));margin-left:auto;margin-right:auto}
+.viewer{position:relative;flex:1;display:flex;align-items:center;justify-content:center;min-height:0;padding:22px 68px;overflow:hidden}
+.book{position:relative;width:min(88vw,calc((100dvh - 142px)*2));aspect-ratio:2/1;perspective:2200px;outline:none;filter:drop-shadow(var(--shadow));margin:0 auto}
 .spread{position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat;background-color:#fff;backface-visibility:hidden;transform-style:preserve-3d;overflow:hidden}
 .spread.base{z-index:1}.spread.turning{z-index:3;display:none;transform-origin:100% 100%;box-shadow:10px 12px 30px rgba(0,0,0,.35)}
 .turning.active{display:block;animation:turnNext .82s cubic-bezier(.22,.72,.18,1) forwards}
@@ -32,7 +32,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 @media (orientation:portrait) and (max-width:1100px){
   .topbar{height:50px;padding:0 16px}.top-actions{gap:12px}.top-actions button:first-child{display:none}.brand{font-size:11px}
   .viewer{padding:18px 8px 48px}
-  .book{width:min(94vw, calc((100vh - 150px) * 2)); max-width:94vw; height:auto; aspect-ratio:2/1}
+  .book{width:min(94vw, calc((100dvh - 150px) * 2)); max-width:94vw; height:auto; aspect-ratio:2/1; margin:0 auto}
   .spread{left:0!important; right:0!important; width:100%!important; height:100%; background-size:cover!important; background-position:center!important}
   .corner-glow{width:42%;height:42%}
   .nav{width:40px;height:70px;font-size:44px}.prev{left:-3px}.next{right:-3px}
@@ -41,6 +41,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 }
 @media (orientation:landscape) and (max-width:900px){
   .topbar{height:46px;padding:0 14px}.brand{font-size:10px}.top-actions{gap:10px}.top-actions button{font-size:9px}
-  .viewer{padding:10px 42px 22px}.book{width:min(90vw,calc((100vh - 105px)*2));aspect-ratio:2/1}.nav{font-size:42px;width:40px}.prev{left:2px}.next{right:2px}.hint{font-size:9px;bottom:0}.bottombar{height:38px;padding:0 14px}.bottombar .title{display:none}
+  .viewer{padding:10px 42px 22px}.book{width:min(90vw,calc((100dvh - 105px)*2));aspect-ratio:2/1; margin:0 auto}.nav{font-size:42px;width:40px}.prev{left:2px}.next{right:2px}.hint{font-size:9px;bottom:0}.bottombar{height:38px;padding:0 14px}.bottombar .title{display:none}
 }
 @media (prefers-reduced-motion:reduce){.turning.active{animation-duration:.01ms}}
